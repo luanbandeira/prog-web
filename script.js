@@ -1,14 +1,13 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('meuFormulario');
     const botaoEnviar = document.getElementById('botaoEnviar');
     const botaoMostrar = document.getElementById('botaoMostrar');
+    const botaoLimpar = document.getElementById('botaoLimpar'); 
     const divDados = document.getElementById('dadosSalvos');
-
 
     const STORAGE_KEY = 'formData';
 
-
-    function salvarDados(event){
+    function salvarDados(event) {
         event.preventDefault();
 
         const dados = {
@@ -16,17 +15,15 @@ document.addEventListener('DOMContentLoaded', function(){
             endereco: form.endereco.value,
             email: form.email.value,
             telefone: form.telefone.value
-
-        }
+        };
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
-        alert("dados salvos com sucesso")
-        form.resetxxxxxxxxxxxxxxxx
+        alert("Dados salvos com sucesso");
+        form.reset();
     }
 
-
-    function mostrarDados () {
-        const dadosSalvos = getItem(STORAGE_KEY);
+    function mostrarDados() {
+        const dadosSalvos = localStorage.getItem(STORAGE_KEY);
 
         if (dadosSalvos) {
             const dados = JSON.parse(dadosSalvos);
@@ -40,22 +37,15 @@ document.addEventListener('DOMContentLoaded', function(){
         } else {
             divDados.innerHTML = '<p>Nenhum dado salvo encontrado.</p>';
         }
-
-
-        function limparDados() {
-            localStorage.removeItem(STORAGE_KEY);
-            divDados.innerHTML = '<p>Dados foram removidos.</p>';
-        }
-
-
-        form.addEventListener('submit', salvarDados);
-        btnMostrar.addEventListener('click', mostrarDados);
-        btnLimpar.addEventListener('click', limparDados);
     }
 
+    function limparDados() {
+        localStorage.removeItem(STORAGE_KEY);
+        divDados.innerHTML = '<p>Dados foram removidos.</p>';
+    }
 
-
-
-
-
-})
+    
+    form.addEventListener('submit', salvarDados);
+    botaoMostrar.addEventListener('click', mostrarDados);
+    botaoLimpar.addEventListener('click', limparDados);
+});
