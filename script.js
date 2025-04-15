@@ -46,30 +46,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function enviarWhatsApp() {
-        const telefoneDestino = document.getElementById('telefoneDestino').value;
-
+        let telefoneDestino = document.getElementById('telefoneDestino').value;
+        telefoneDestino = telefoneDestino.replace(/\D/g, ''); // Remove tudo que não for número
+    
         if (!telefoneDestino) {
             alert('Por favor, informe o número do telefone de destino.');
             return;
         }
-
+    
         const dados = {
             nome: form.nome.value,
             endereco: form.endereco.value,
             email: form.email.value,
             telefone: form.telefone.value
         };
-
+    
         const mensagem = `Olá! Aqui estão os dados cadastrados:%0A%0A`
             + `*Nome:* ${dados.nome}%0A`
             + `*Endereço:* ${dados.endereco}%0A`
             + `*Email:* ${dados.email}%0A`
             + `*Telefone:* ${dados.telefone}`;
-
+    
         const url = `https://api.whatsapp.com/send?phone=${telefoneDestino}&text=${mensagem}`;
-
+    
         window.open(url, '_blank');
     }
+    
 
     form.addEventListener('submit', salvarDados);
     botaoMostrar.addEventListener('click', mostrarDados);
