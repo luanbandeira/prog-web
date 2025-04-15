@@ -4,45 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMULÁRIO CADASTRO</title>
-    <script src="script.js"></script>
-
+    <script defer src="script.js"></script>
 </head>
 <body>
 
-    <form id="meuFormulario" >
+    <form id="meuFormulario">
         <div>
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
         </div>
-
-
 
         <div>
             <label for="endereco">Endereço:</label>
             <input type="text" name="endereco" id="endereco" required>
         </div>
 
-
         <div>
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
         </div>
 
-
         <div>
-            <label for="telefone">Telefone</label>
+            <label for="telefone">Telefone:</label>
             <input type="tel" name="telefone" id="telefone" required>
         </div>
 
+        <div>
+            <label for="telefoneDestino">Telefone destinatário (com DDD e sem espaços):</label>
+            <input type="tel" name="telefoneDestino" id="telefoneDestino" required>
+        </div>
 
         <button type="submit" id="botaoEnviar">Enviar</button>
-
         <button type="button" id="botaoMostrar">Mostrar dados</button>
-
         <button type="button" id="botaoLimpar">Limpar</button>
+        <button type="button" id="botaoWhatsApp">Enviar via WhatsApp</button>
     </form>
 
     <div id="dadosSalvos" style="margin-top: 20px;"></div>
-    
+
 </body>
 </html>
