@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function enviarWhatsApp() {
         let telefoneDestino = document.getElementById('telefoneDestino').value;
     
-        // Remove tudo que não for número
+        
         telefoneDestino = telefoneDestino.replace(/\D/g, '');
     
-        // Adiciona o DDI do Brasil (+55) se não estiver presente
+        
         if (!telefoneDestino.startsWith('55')) {
             telefoneDestino = '55' + telefoneDestino;
         }
